@@ -48,6 +48,18 @@ struct BubbleView: View {
         BubbleView(
             textColor: .black,
             bgColor: .purple.opacity(0.4),
+            name: "bubble3",
+            text: "25"
+        )
+        BubbleView(
+            textColor: .white,
+            bgColor: .purple.opacity(0.4),
+            name: "bubble3",
+            text: "25"
+        )
+        BubbleView(
+            textColor: .black,
+            bgColor: .purple.opacity(0.4),
             name: "bubble2",
             text: "25"
         )
