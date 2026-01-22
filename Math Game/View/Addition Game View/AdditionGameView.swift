@@ -32,6 +32,8 @@ struct AdditionGameView: View {
                 )
                 
                 Spacer()
+                
+                OptionsView(gameVM: gameVM)
             }
         }
     }
