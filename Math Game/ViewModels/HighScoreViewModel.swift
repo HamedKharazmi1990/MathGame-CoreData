@@ -34,12 +34,43 @@ class HighScoreViewModel {
     
     func fetchHighScores() {
         let request = NSFetchRequest<HighScoreEntity>(entityName: "HighScoreEntity")
+        let sortDescriptor = NSSortDescriptor(key: "score", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
         
         do {
             highScores = try container.viewContext.fetch(request)
         } catch {
             print("Error fetching high scores: \(error.localizedDescription)")
         }
+    }
+    
+    func saveHighScore() {
+        do {
+            try container.viewContext.save()
+            fetchHighScores()
+        } catch {
+            print("Error saving high scores: \(error.localizedDescription)")
+        }
+    }
+    
+    func addHighScore(name: String, score: Int64) {
+        let entity = HighScoreEntity(context: container.viewContext)
+        entity.name = name
+        entity.score = score
+        
+        saveHighScore()
+    }
+    
+    func updateHighScore(entity: HighScoreEntity, name: String) {
+        entity.name = name
+        
+        saveHighScore()
+    }
+    
+    func deleteHighScore(entity: HighScoreEntity) {
+        container.viewContext.delete(entity)
+        
+        saveHighScore()
     }
     
 }
