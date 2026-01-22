@@ -23,6 +23,15 @@ struct AdditionGameView: View {
                 )
                 
                 Spacer()
+                
+                BubbleView(
+                    textColor: .white,
+                    bgColor: Color.purple.opacity(0.7),
+                    name: "bubble3",
+                    text: "\(gameVM.number1) + \(gameVM.number2)"
+                )
+                
+                Spacer()
             }
         }
     }
