@@ -10,6 +10,12 @@ import SwiftUI
 struct AdditionGameView: View {
     @State private var gameVM = AdditionGameViewModel()
     
+    // TODO: Update this once
+    // we add the high score view model
+    var showGameOverView: Bool {
+        gameVM.gameOver
+    }
+    
     var body: some View {
         ZStack {
             GameBackgroundView()
@@ -35,6 +41,18 @@ struct AdditionGameView: View {
                 
                 OptionsView(gameVM: gameVM)
             }
+            .padding()
+            .blur(radius: showGameOverView ? 5 : 0)
+            .disabled(showGameOverView)
+            
+            GameOverView()
+                .padding()
+                .blur(radius: showGameOverView ? 0 : 30)
+                .opacity(showGameOverView ? 1 : 0)
+                .disabled(!showGameOverView)
+                .onTapGesture {
+                    gameVM.reset()
+                }
         }
     }
 }
