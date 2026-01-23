@@ -8,16 +8,32 @@
 import SwiftUI
 
 struct HighScoreView: View {
+    
+    @Environment(HighScoreViewModel.self) private var highScoreVM
+    
     var body: some View {
         ZStack {
             HighScoreBackgroundView()
             
-            Text("HighScoreView")
-                .foregroundStyle(.white)
+            VStack {
+                HighScoreTitle()
+                
+                List {
+                    ForEach(highScoreVM.highScores) { entity in
+                        Text("\(entity.score)")
+                    }
+                }
+                
+                Image("creature0")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+            }
         }
     }
 }
 
 #Preview {
     HighScoreView()
+        .environment(HighScoreViewModel())
 }
