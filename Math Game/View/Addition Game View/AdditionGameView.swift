@@ -10,7 +10,7 @@ import SwiftUI
 struct AdditionGameView: View {
     @State private var gameVM = AdditionGameViewModel()
     
-    @Environment private var highScoreVM: HighScoreViewModel
+    @Environment(HighScoreViewModel.self) private var highScoreVM
     
     @State private var showHighScoreView = false
     
@@ -64,6 +64,21 @@ struct AdditionGameView: View {
                     gameVM.reset()
                 }
         }
+        .fullScreenCover(
+            isPresented: $showHighScoreView,
+            onDismiss: {
+                gameVM.reset()
+            }) {
+                EnterNewHighScoreView(
+                    score: gameVM.score,
+                    name: $name,
+                    isPresented: $showHighScoreView
+                )
+            }
+            .onChange(
+                of: showHighScore) { oldValue, newValue in
+                    showHighScoreView = newValue
+                }
     }
 }
 
