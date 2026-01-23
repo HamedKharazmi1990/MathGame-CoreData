@@ -15,6 +15,16 @@ class HighScoreViewModel {
     
     var highScores: [HighScoreEntity] = []
     
+    var minHighScore: Int64? {
+        if highScores.isEmpty {
+            return nil
+        } else {
+            return highScores.last?.score
+        }
+    }
+    
+    let MAX_NUM_HIGHSCORES = 100
+    
     init() {
         container = NSPersistentContainer(name: "HighScoresDataModel")
         
@@ -30,6 +40,16 @@ class HighScoreViewModel {
         
         // Fetch data into highScores
         fetchHighScores()
+    }
+    
+    func isNewHighScore(score: Int) -> Bool {
+        if score <= 0 {
+            return false
+        } else if let minHighScore {
+            return minHighScore < score || highScores.count < MAX_NUM_HIGHSCORES
+        } else {
+            return true
+        }
     }
     
     func fetchHighScores() {

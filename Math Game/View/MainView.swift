@@ -27,4 +27,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environment(HighScoreViewModel())
 }

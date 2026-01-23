@@ -10,6 +10,16 @@ import SwiftUI
 struct AdditionGameView: View {
     @State private var gameVM = AdditionGameViewModel()
     
+    @Environment private var highScoreVM: HighScoreViewModel
+    
+    @State private var showHighScoreView = false
+    
+    var showHighScore: Bool {
+        gameVM.gameOver && highScoreVM.isNewHighScore(score:gameVM.score)
+    }
+    
+    @State private var name: String = ""
+    
     // TODO: Update this once
     // we add the high score view model
     var showGameOverView: Bool {
@@ -59,4 +69,5 @@ struct AdditionGameView: View {
 
 #Preview {
     AdditionGameView()
+        .environment(HighScoreViewModel())
 }
