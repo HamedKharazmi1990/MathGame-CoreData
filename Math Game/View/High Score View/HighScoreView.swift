@@ -26,7 +26,9 @@ struct HighScoreView: View {
                             entity: entity
                         )
                     }
-                }
+                    .onDelete(perform: highScoreVM.deleteScore)
+                    .listRowBackground(Color.black)
+                }.listStyle(.plain)
                 
                 Image("creature0")
                     .resizable()
@@ -82,12 +84,22 @@ struct RankScoreView: View {
 
                 }
             } else {
-                Text("Display score data")
-                    .onTapGesture {
-                        withAnimation {
-                            editMode.toggle()
-                        }
+                HStack {
+                    Text(rank.ordinal)
+                        .frame(maxWidth: .infinity)
+                    Text("\(score)")
+                        .frame(maxWidth: .infinity)
+                    Text(entity.name?.uppercased() ?? "")
+                        .frame(maxWidth: .infinity)
+                }
+                .font(.headline)
+                .fontWeight(.semibold)
+                .foregroundStyle(color)
+                .onTapGesture {
+                    withAnimation {
+                        editMode.toggle()
                     }
+                }
             }
         }
     }

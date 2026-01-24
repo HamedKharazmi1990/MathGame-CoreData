@@ -4,6 +4,9 @@
     "%lld" : {
 
     },
+    "Enter your name" : {
+
+    },
     "Game" : {
       "localizations" : {
         "ar" : {
@@ -124,9 +127,6 @@
         }
       }
     },
-    "HighScoreView" : {
-
-    },
     "Level" : {
       "localizations" : {
         "ar" : {
@@ -206,6 +206,9 @@
           }
         }
       }
+    },
+    "New High Score!" : {
+
     },
     "Rank" : {
       "localizations" : {

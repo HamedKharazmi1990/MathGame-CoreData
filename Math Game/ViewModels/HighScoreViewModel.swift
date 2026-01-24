@@ -93,4 +93,10 @@ class HighScoreViewModel {
         saveHighScore()
     }
     
+    func deleteScore(indexSet: IndexSet) {
+        guard let index = indexSet.first else { return }
+        let entityToDelete = highScores[index]
+        deleteHighScore(entity: entityToDelete)
+    }
+    
 }
