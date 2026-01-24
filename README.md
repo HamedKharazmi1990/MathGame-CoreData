@@ -42,7 +42,7 @@ This project follows the **MVVM design pattern** and uses the modern **`@Observa
 | **UI Framework** | SwiftUI |
 | **Architecture** | MVVM |
 | **State Management** | `@Observable` |
-| **Persistence** | Core Data | Swift Data
+| **Persistence** | Core Data & Swift Data
 | **Platform** | iOS |
 | **IDE** | Xcode |
 | **Minimum iOS** | iOS 17+ |
