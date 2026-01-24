@@ -17,10 +17,11 @@ struct OptionsView: View {
     var body: some View {
         LazyVGrid(columns: columns) {
             ForEach(gameVM.possibleSolutions, id: \.self) { option in
-                let cheatColor: Color = option == gameVM.answer ? .red : .black
+                // Use it in debug mode and apply it to BuubleView(textColor: cheatColor)
+//                let cheatColor: Color = option == gameVM.answer ? .red : .black
                 
                 BubbleView(
-                    textColor: cheatColor,
+                    textColor: .black,
                     bgColor: .purple.opacity(0.7),
                     name: "bubble2",
                     text: ("\(option)")
