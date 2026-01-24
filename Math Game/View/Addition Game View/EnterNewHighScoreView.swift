@@ -43,13 +43,7 @@ struct EnterNewHighScoreView: View {
                     .padding()
                 
                 Button {
-                    name = name.isEmpty ? "Anon" : name
-                    modelContext.insert(
-                        HighScoreEntity(
-                            name: name,
-                            score: score
-                        )
-                    )
+                    addHighScore()
                     isPresented = false
                 } label: {
                     Text("Save")
@@ -63,6 +57,16 @@ struct EnterNewHighScoreView: View {
                 
             }
         }
+    }
+    
+    func addHighScore() {
+        name = name.isEmpty ? "Anon" : name
+        modelContext.insert(
+            HighScoreEntity(
+                name: name,
+                score: score
+            )
+        )
     }
 }
 

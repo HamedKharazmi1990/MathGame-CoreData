@@ -81,12 +81,8 @@ struct RankScoreView: View {
                         .cornerRadius(10)
                     
                     Button {
-                        entity.name = name.isEmpty ? entity.name : name
-                        do {
-                            try modelContext.save()
-                        } catch {
-                            print("update/save failure")
-                        }
+                        update(entity: entity, name: name)
+                        
                         withAnimation {
                             editMode.toggle()
                         }
@@ -117,6 +113,15 @@ struct RankScoreView: View {
                     }
                 }
             }
+        }
+    }
+    
+    func update(entity: HighScoreEntity, name: String) {
+        entity.name = name.isEmpty ? entity.name : name
+        do {
+            try modelContext.save()
+        } catch {
+            print("update/save failure")
         }
     }
 }
