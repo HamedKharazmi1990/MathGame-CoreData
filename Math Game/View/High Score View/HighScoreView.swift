@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HighScoreView: View {
     
-    @Environment(HighScoreViewModel.self) private var highScoreVM
+    @Query private var highScores: [HighScoreEntity] = []
+    
+    var orderedHighScores: [HighScoreEntity] {
+        highScores.sorted { $0.score > $1.score }
+    }
+    
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
         ZStack {
@@ -19,14 +26,14 @@ struct HighScoreView: View {
                 HighScoreTitle()
                 
                 List {
-                    ForEach(Array(highScoreVM.highScores.enumerated()), id: \.offset) { index, entity in
+                    ForEach(Array(orderedHighScores.enumerated()), id: \.offset) { index, entity in
                         RankScoreView(
                             rank: index + 1,
                             score: Int(entity.score),
                             entity: entity
                         )
                     }
-                    .onDelete(perform: highScoreVM.deleteScore)
+                    .onDelete(perform: deleteScore)
                     .listRowBackground(Color.black)
                 }.listStyle(.plain)
                 
@@ -35,6 +42,12 @@ struct HighScoreView: View {
                     .scaledToFit()
                     .frame(width: 100, height: 100)
             }
+        }
+    }
+    
+    func deleteScore(indexSet: IndexSet) {
+        for index in indexSet {
+            modelContext.delete(highScores[index])
         }
     }
 }
@@ -51,7 +64,9 @@ struct RankScoreView: View {
     ]
     @State private var editMode = false
     
-    @Environment(HighScoreViewModel.self) private var highScoreVM
+    @Query private var highScores: [HighScoreEntity] = []
+    
+    @Environment(\.modelContext) var modelContext
     
     @State private var name: String = ""
     @State private var save = false
@@ -60,7 +75,7 @@ struct RankScoreView: View {
         VStack {
             if editMode {
                 HStack {
-                    TextField(entity.name ?? "Name", text: $name)
+                    TextField(entity.name, text: $name)
                         .padding()
                         .background(Color.green.gradient)
                         .fontWeight(.semibold)
@@ -68,9 +83,12 @@ struct RankScoreView: View {
                         .cornerRadius(10)
                     
                     Button {
-                        highScoreVM.updateHighScore(
-                            entity: entity,
-                            name: name.isEmpty ? (entity.name ?? "Anon") : name)
+                        entity.name = name.isEmpty ? entity.name : name
+                        do {
+                            try modelContext.save()
+                        } catch {
+                            print("update/save failure")
+                        }
                         withAnimation {
                             editMode.toggle()
                         }
@@ -89,7 +107,7 @@ struct RankScoreView: View {
                         .frame(maxWidth: .infinity)
                     Text("\(score)")
                         .frame(maxWidth: .infinity)
-                    Text(entity.name?.uppercased() ?? "")
+                    Text(entity.name.uppercased())
                         .frame(maxWidth: .infinity)
                 }
                 .font(.headline)
@@ -107,5 +125,5 @@ struct RankScoreView: View {
 
 #Preview {
     HighScoreView()
-        .environment(HighScoreViewModel())
+        .modelContainer(for: HighScoreEntity.self)
 }
