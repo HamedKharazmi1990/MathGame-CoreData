@@ -15,17 +15,14 @@ struct AdditionGameView: View {
     
     @State private var showHighScoreView = false
     
-    @Query private var highScores: [HighScoreEntity] = []
-    
-    var orderedHighScores: [HighScoreEntity] {
-        highScores.sorted { $0.score > $1.score }
-    }
+    @Query(sort:[SortDescriptor(\HighScoreEntity.score, order: .reverse)])
+    private var highScores: [HighScoreEntity]
     
     var minHighScore: Int? {
         if highScores.isEmpty {
             return nil
         } else {
-            return orderedHighScores.last?.score
+            return highScores.last?.score
         }
     }
     

@@ -10,11 +10,8 @@ import SwiftData
 
 struct HighScoreView: View {
     
-    @Query private var highScores: [HighScoreEntity] = []
-    
-    var orderedHighScores: [HighScoreEntity] {
-        highScores.sorted { $0.score > $1.score }
-    }
+    @Query(sort:[SortDescriptor(\HighScoreEntity.score, order: .reverse)])
+    private var highScores: [HighScoreEntity]
     
     @Environment(\.modelContext) var modelContext
     
@@ -26,7 +23,7 @@ struct HighScoreView: View {
                 HighScoreTitle()
                 
                 List {
-                    ForEach(Array(orderedHighScores.enumerated()), id: \.offset) { index, entity in
+                    ForEach(Array(highScores.enumerated()), id: \.offset) { index, entity in
                         RankScoreView(
                             rank: index + 1,
                             score: Int(entity.score),
@@ -64,7 +61,8 @@ struct RankScoreView: View {
     ]
     @State private var editMode = false
     
-    @Query private var highScores: [HighScoreEntity] = []
+    @Query(sort:[SortDescriptor(\HighScoreEntity.score, order: .reverse)])
+    private var highScores: [HighScoreEntity]
     
     @Environment(\.modelContext) var modelContext
     
