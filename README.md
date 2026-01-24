@@ -15,6 +15,14 @@ This project follows the **MVVM design pattern** and uses the modern **`@Observa
 ## ✨ Features
 
 - ➕ Interactive **addition-based math game**
+- 🌍 Supports multiple languages:
+  - English
+  - French
+  - Arabic
+  - Italian
+  - Portuguese
+  - Spanish
+  - Turkish
 - 🧮 Generate random number addition questions
 - 🏆 Save user scores using **Core Data**
 - ✏️ Update existing scores
