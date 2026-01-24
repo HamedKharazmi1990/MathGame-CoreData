@@ -1,1 +1,112 @@
-# MathGame (SwiftUI)
+# ➕ MathGame Demo App (SwiftUI)
+
+**MathGame** is a demo iOS application built with **SwiftUI** that challenges users with **simple addition questions**.  
+The app tracks user scores using **Core Data** and supports **creating, updating, and deleting** saved scores.
+
+This project follows the **MVVM design pattern** and uses the modern **`@Observable` macro** for state management.
+
+## Demo
+<p align="center">
+  <img src="./assets/MathGameDemo.gif" width="420" alt="MathGame Demo" />
+</p>
+
+---
+
+## ✨ Features
+
+- ➕ Interactive **addition-based math game**
+- 🧮 Generate random number addition questions
+- 🏆 Save user scores using **Core Data**
+- ✏️ Update existing scores
+- 🗑️ Delete stored scores
+- 📊 Display score history
+- 🧱 MVVM architecture
+- 👀 Modern state management using **Observable macro**
+- ⚡ Smooth SwiftUI experience
+
+---
+
+## 🧰 Tech Stack
+
+| Category | Technology |
+|--------|------------|
+| **Language** | Swift |
+| **UI Framework** | SwiftUI |
+| **Architecture** | MVVM |
+| **State Management** | `@Observable` |
+| **Persistence** | Core Data |
+| **Platform** | iOS |
+| **IDE** | Xcode |
+| **Minimum iOS** | iOS 17+ |
+
+---
+
+
+## 📌 Project Overview
+
+MathGame is designed as a **learning and demonstration project** that shows how to:
+- Build a SwiftUI app using MVVM
+- Implement a simple **addition game**
+- Persist scores using Core Data
+- Perform full **CRUD operations**
+- Manage state with the modern `@Observable` macro
+
+---
+
+## 🧱 Architecture
+
+The project follows the **MVVM (Model–View–ViewModel)** pattern:
+
+- **View**: SwiftUI UI layer
+- **ViewModel**: Game logic, score calculation, persistence
+- **Model**: Core Data entities for saved scores
+
+The **Observable macro** replaces older patterns such as `ObservableObject` and `@Published`.
+
+---
+
+## 💾 Core Data Usage
+
+Core Data is used to:
+
+- Store user scores locally
+- Fetch score history
+- Update saved scores
+- Delete scores
+
+All Core Data operations are handled through the ViewModel layer.
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone "https://github.com/HamedKharazmi1990/MathGame-CoreData"
+cd "Math Game"
+```
+
+### 2️⃣ Open the Project
+
+    1. Open Math Game.xcodeproj in Xcode
+    2. Select an iPhone simulator
+    4. Press Run (⌘R) 
+
+
+### ⚠️ Limitations
+
+    - Only addition questions
+    - Demo-level difficulty
+    - No remote sync or cloud storage
+    - Basic UI styling
+
+
+
+### 👨‍💻 Maintainer
+
+    Hamed Kharazmi
+    📧 hamed.kharazmi@gmail.com
+
+
+    

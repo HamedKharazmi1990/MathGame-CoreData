@@ -11,6 +11,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		232643342F2511CB005B51E8 /* assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = assets;
+			sourceTree = "<group>";
+		};
 		23A54FB12F2249BD0017D9E1 /* Math Game */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Math Game";
@@ -32,6 +37,7 @@
 		23A54FA62F2249BD0017D9E1 = {
 			isa = PBXGroup;
 			children = (
+				232643342F2511CB005B51E8 /* assets */,
 				23A54FB12F2249BD0017D9E1 /* Math Game */,
 				23A54FB02F2249BD0017D9E1 /* Products */,
 			);
@@ -61,6 +67,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				232643342F2511CB005B51E8 /* assets */,
 				23A54FB12F2249BD0017D9E1 /* Math Game */,
 			);
 			name = "Math Game";
