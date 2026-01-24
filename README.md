@@ -108,7 +108,31 @@ cd "Math Game"
     - Demo-level difficulty
     - No remote sync or cloud storage
     - Basic UI styling
+    
 
+## 🔀 SwiftData Migration (New Branch)
+
+A new branch has been created to migrate persistence from **Core Data** to **SwiftData**.
+
+### 📌 Details
+
+- A separate branch introduces **SwiftData** as a modern replacement for Core Data
+- Uses Apple’s latest persistence framework introduced in iOS 17
+- Simplifies data modeling and CRUD operations
+- Integrates seamlessly with **SwiftUI** and the `@Observable` macro
+
+### 🌿 swiftdata
+
+
+### 🆚 Comparison
+
+| Core Data | SwiftData |
+|----------|-----------|
+| Manual context management | Automatic data handling |
+| More boilerplate | Cleaner & simpler syntax |
+| Older persistence API | Modern Swift-native API |
+
+> Both implementations are kept for comparison and learning purposes.
 
 
 ### 👨‍💻 Maintainer
