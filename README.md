@@ -1,7 +1,7 @@
 # ➕ MathGame Demo App (SwiftUI)
 
 **MathGame** is a demo iOS application built with **SwiftUI** that challenges users with **simple addition questions**.  
-The app tracks user scores using **Core Data** and supports **creating, updating, and deleting** saved scores.
+The app tracks user scores using **Core Data** and **Swift Data** in swiftdata branch and supports **creating, updating, and deleting** saved scores.
 
 This project follows the **MVVM design pattern** and uses the modern **`@Observable` macro** for state management.
 
@@ -24,7 +24,7 @@ This project follows the **MVVM design pattern** and uses the modern **`@Observa
   - Spanish
   - Turkish
 - 🧮 Generate random number addition questions
-- 🏆 Save user scores using **Core Data**
+- 🏆 Save user scores using **Core Data** and **Swift Data**
 - ✏️ Update existing scores
 - 🗑️ Delete stored scores
 - 📊 Display score history
@@ -42,7 +42,7 @@ This project follows the **MVVM design pattern** and uses the modern **`@Observa
 | **UI Framework** | SwiftUI |
 | **Architecture** | MVVM |
 | **State Management** | `@Observable` |
-| **Persistence** | Core Data |
+| **Persistence** | Core Data | Swift Data
 | **Platform** | iOS |
 | **IDE** | Xcode |
 | **Minimum iOS** | iOS 17+ |
@@ -55,7 +55,7 @@ This project follows the **MVVM design pattern** and uses the modern **`@Observa
 MathGame is designed as a **learning and demonstration project** that shows how to:
 - Build a SwiftUI app using MVVM
 - Implement a simple **addition game**
-- Persist scores using Core Data
+- Persist scores using Core Data and Swift Data
 - Perform full **CRUD operations**
 - Manage state with the modern `@Observable` macro
 
@@ -67,22 +67,22 @@ The project follows the **MVVM (Model–View–ViewModel)** pattern:
 
 - **View**: SwiftUI UI layer
 - **ViewModel**: Game logic, score calculation, persistence
-- **Model**: Core Data entities for saved scores
+- **Model**: Core Data and Swift Data entities for saved scores
 
 The **Observable macro** replaces older patterns such as `ObservableObject` and `@Published`.
 
 ---
 
-## 💾 Core Data Usage
+## 💾 Core Data and Swift Data Usage
 
-Core Data is used to:
+Core Data and Swift Data are used to:
 
 - Store user scores locally
 - Fetch score history
 - Update saved scores
 - Delete scores
 
-All Core Data operations are handled through the ViewModel layer.
+All operations are handled through the ViewModel layer.
 
 ---
 
